@@ -3,6 +3,6 @@
 Topik : Sistem Mesin ATM
 
 Anggota Kelompok : 
-Alfitroh Syacy Novalino
-Erika Atthacarya Putri Cahyani
+Alfitroh Syacy Novalino \n
+Erika Atthacarya Putri Cahyani \n
 Kayla Rachmaudina
