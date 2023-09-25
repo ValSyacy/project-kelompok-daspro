@@ -17,7 +17,7 @@ public class PrototypeSistemATM {
                 menu = sc.nextInt();
 
                 switch(menu) {
-                    case 1:
+                    case 1: //Menu 1. Tarik Tunai
 
                     int saldo_awal, saldo_akhir, nominal_tariktunai;
                     
@@ -32,7 +32,7 @@ public class PrototypeSistemATM {
                     System.out.println("Tarik Tunai Berhasil Senilai : Rp." + nominal_tariktunai + "\nSisa Saldo Anda Sejumlah     : Rp." + saldo_akhir + "\n");
                     break;
 
-                    case 2:
+                    case 2: //Menu 2. Transfer Saldo
 
                     int saldo_akhir2, saldo_awal2, nominal_transfer;
                     String nama_penerima;
@@ -58,7 +58,7 @@ public class PrototypeSistemATM {
                     System.out.println("\nTranfer Berhasil Senilai : Rp." +nominal_transfer + "\nSisa Saldo Anda Sejumlah : Rp." + saldo_akhir2 + "\n");
                     break;
 
-                    case 3:
+                    case 3: // Menu 3. Pengecekan Bunga Tabungan
                     int jmlh_tabungan_awal, lama_tabungan;
                     double prosentase_bunga =0.02, bunga, jmlh_tabungan_akhir;
 
