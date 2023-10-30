@@ -9,7 +9,7 @@ public class PrototypeSistemATM {
 
         int password = 123;
         do {
-            System.out.println("\nMasukkan Password Anda: ");
+            System.out.print("\nMasukkan Password Anda: ");
             password = sc.nextInt();
 
             if (password==123) {
@@ -20,7 +20,7 @@ public class PrototypeSistemATM {
                 }
             
                 int konfirmasi_menu, saldo_awal, saldo_akhir;
-                System.out.println("\nSilhkan Menu Yang Ingin Anda Pilih");
+                System.out.print("\nSilhkan Menu Yang Ingin Anda Pilih: ");
                 konfirmasi_menu = sc.nextInt();
 
                 switch(konfirmasi_menu) {
@@ -28,9 +28,9 @@ public class PrototypeSistemATM {
 
                     int nominal_tariktunai;
                     
-                    System.out.println("\nMasukkan Jumlah Saldo Anda");
+                    System.out.print("\nMasukkan Jumlah Saldo Anda: Rp.");
                     saldo_awal=sc.nextInt();
-                    System.out.println("\nMasukkan Nominal Jumlah Tarik Tunai");
+                    System.out.print("\nMasukkan Nominal Jumlah Tarik Tunai: Rp.");
                     nominal_tariktunai=sc.nextInt();
                     
                     saldo_akhir= saldo_awal-nominal_tariktunai;
@@ -45,16 +45,16 @@ public class PrototypeSistemATM {
                     String nama_penerima;
                     long rekening_penerima;
 
-                    System.out.println("\nNama Penerima");
+                    System.out.print("\nNama Penerima: ");
                     nama_penerima=sc.next();
 
-                    System.out.println("\nMasukkan Rekening Penerima");
+                    System.out.print("\nMasukkan Rekening Penerima: ");
                     rekening_penerima=sc.nextLong();
 
-                    System.out.println("\nMasukkan Jumlah Saldo Anda");
+                    System.out.print("\nMasukkan Jumlah Saldo Anda: Rp.");
                     saldo_awal=sc.nextInt();
 
-                    System.out.println("\nMasukkan Nominal Transfer");
+                    System.out.print("\nMasukkan Nominal Transfer: Rp.");
                     nominal_transfer=sc.nextInt();
                     
                     saldo_akhir= saldo_awal-nominal_transfer;
@@ -69,9 +69,9 @@ public class PrototypeSistemATM {
                     int jmlh_tabungan_awal, lama_tabungan;
                     double prosentase_bunga =0.02, bunga, jmlh_tabungan_akhir;
 
-                    System.out.println("\nMasukkan Jumlah Tabungan Awal Anda");
+                    System.out.print("\nMasukkan Jumlah Tabungan Awal Anda: Rp.");
                     jmlh_tabungan_awal=sc.nextInt();
-                    System.out.println("\nMasukkan Lama Menabung Anda");
+                    System.out.print("\nMasukkan Lama Menabung Anda: ");
                     lama_tabungan=sc.nextInt();
 
                     bunga= lama_tabungan*prosentase_bunga*jmlh_tabungan_awal;
