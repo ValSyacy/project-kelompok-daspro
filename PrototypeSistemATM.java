@@ -5,9 +5,11 @@ public class PrototypeSistemATM {
 
         Scanner sc = new Scanner(System.in);
 
+        // Menu dan Password
         String[] menu = {"1. Tarik Tunai", "2. Transfer Saldo", "3. Pengecekan Bunga Tabungan"};
 
         int password = 123;
+        // Perulangan Password
         do {
             System.out.print("\nMasukkan Password Anda: ");
             password = sc.nextInt();
@@ -37,7 +39,15 @@ public class PrototypeSistemATM {
                     
                     System.out.println("\n-----TARIK TUNAI BERHASIL-----");
                     System.out.println("Tarik Tunai Berhasil Senilai : Rp." + nominal_tariktunai + "\nSisa Saldo Anda Sejumlah     : Rp." + saldo_akhir + "\n");
-                    break;
+                    
+                    //Konfirmasi Transaksi Lain
+                    System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
+                    String konfirmasi_lain1 = sc.next();
+                    if (konfirmasi_lain1.equalsIgnoreCase("y")){
+                        continue;
+                    }else{
+                        break;
+                    }
 
                     case 2: //Menu 2. Transfer Saldo
 
@@ -63,7 +73,15 @@ public class PrototypeSistemATM {
                     System.out.println("Nama Penerima\t  : " +nama_penerima);
                     System.out.println("Rekening Penerima : " +rekening_penerima);
                     System.out.println("\nTranfer Berhasil Senilai : Rp." +nominal_transfer + "\nSisa Saldo Anda Sejumlah : Rp." + saldo_akhir + "\n");
-                    break;
+                    
+                    //Konfirmasi Transaksi Lain
+                    System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
+                    String konfirmasi_lain2 = sc.next();
+                    if (konfirmasi_lain2.equalsIgnoreCase("y")){
+                        continue;
+                    }else{
+                        break;
+                    }
 
                     case 3: // Menu 3. Pengecekan Bunga Tabungan
                     int jmlh_tabungan_awal, lama_tabungan;
@@ -78,10 +96,28 @@ public class PrototypeSistemATM {
                     jmlh_tabungan_akhir=bunga+jmlh_tabungan_awal;
 
                     System.out.println("\nJumlah Tabungan Akhir Anda Adalah Senilai : Rp." +jmlh_tabungan_akhir +"\n");
-                    break;
+                    
+                    //Konfirmasi Transaksi Lain
+                    System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
+                    String konfirmasi_lain3 = sc.next();
+                    if (konfirmasi_lain3.equalsIgnoreCase("y")){
+                        continue;
+                    }else{
+                        break;
+                    }
 
                     default:
                     System.out.println("\nMaaf Menu Lainnya Masih Dalam Pengembangan\n");
+
+                    //Konfirmasi Transaksi Lain
+                    System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
+                    String konfirmasi_lain = sc.next();
+                    if (konfirmasi_lain.equalsIgnoreCase("y")){
+                        continue;
+                    }else{
+                        break;
+                    }
+
                 }break;
             
             }else {
