@@ -5,21 +5,28 @@ public class PrototypeSistemATM {
 
         Scanner sc = new Scanner(System.in);
 
+        String[] menu = {"1. Tarik Tunai", "2. Transfer Saldo", "3. Pengecekan Bunga Tabungan"};
+
         int password = 123;
         do {
             System.out.println("\nMasukkan Password Anda: ");
             password = sc.nextInt();
 
             if (password==123) {
-                System.out.println("\nSilahkan Pilih Menu Transaksi \n1.Tarik Tunai \n2.Transfer Saldo \n3.Pengecekan Bunga Tabungan\n");
-            
-                int menu;
-                menu = sc.nextInt();
 
-                switch(menu) {
+                for(int i=0; i<menu.length; i ++){
+                    System.out.println(menu[i]);
+
+                }
+            
+                int konfirmasi_menu, saldo_awal, saldo_akhir;
+                System.out.println("\nSilhkan Menu Yang Ingin Anda Pilih");
+                konfirmasi_menu = sc.nextInt();
+
+                switch(konfirmasi_menu) {
                     case 1: //Menu 1. Tarik Tunai
 
-                    int saldo_awal, saldo_akhir, nominal_tariktunai;
+                    int nominal_tariktunai;
                     
                     System.out.println("\nMasukkan Jumlah Saldo Anda");
                     saldo_awal=sc.nextInt();
@@ -34,7 +41,7 @@ public class PrototypeSistemATM {
 
                     case 2: //Menu 2. Transfer Saldo
 
-                    int saldo_akhir2, saldo_awal2, nominal_transfer;
+                    int nominal_transfer;
                     String nama_penerima;
                     long rekening_penerima;
 
@@ -45,17 +52,17 @@ public class PrototypeSistemATM {
                     rekening_penerima=sc.nextLong();
 
                     System.out.println("\nMasukkan Jumlah Saldo Anda");
-                    saldo_awal2=sc.nextInt();
+                    saldo_awal=sc.nextInt();
 
                     System.out.println("\nMasukkan Nominal Transfer");
                     nominal_transfer=sc.nextInt();
                     
-                    saldo_akhir2= saldo_awal2-nominal_transfer;
+                    saldo_akhir= saldo_awal-nominal_transfer;
 
                     System.out.println("\n-----TRANSFER BERHASIL-----");
                     System.out.println("Nama Penerima\t  : " +nama_penerima);
                     System.out.println("Rekening Penerima : " +rekening_penerima);
-                    System.out.println("\nTranfer Berhasil Senilai : Rp." +nominal_transfer + "\nSisa Saldo Anda Sejumlah : Rp." + saldo_akhir2 + "\n");
+                    System.out.println("\nTranfer Berhasil Senilai : Rp." +nominal_transfer + "\nSisa Saldo Anda Sejumlah : Rp." + saldo_akhir + "\n");
                     break;
 
                     case 3: // Menu 3. Pengecekan Bunga Tabungan
