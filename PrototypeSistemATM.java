@@ -1,128 +1,117 @@
 import java.util.Scanner;
 
 public class PrototypeSistemATM {
-    public static void main (String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+    private static final int PASSWORD = 123;
 
-        // Menu dan Password
+    private static Scanner scanner = new Scanner(System.in);
+
+    // Fungsi untuk menampilkan menu
+    private static void displayMenu() {
         String[] menu = {"1. Tarik Tunai", "2. Transfer Saldo", "3. Pengecekan Bunga Tabungan"};
 
-        int password = 123;
+        System.out.println("\nMenu:");
+        for (String menuItem : menu) {
+            System.out.println(menuItem);
+        }
+    }
+
+    // Fungsi untuk meminta input password
+    private static int enterPassword() {
+        System.out.print("\nMasukkan Password Anda: ");
+        return scanner.nextInt();
+    }
+
+    // Fungsi untuk melakukan tarik tunai
+    private static int withdrawCash(int saldoAwal) {
+        System.out.print("\nMasukkan Nominal Jumlah Tarik Tunai: Rp.");
+        int nominalTarikTunai = scanner.nextInt();
+        return saldoAwal - nominalTarikTunai;
+    }
+
+    // Fungsi untuk melakukan transfer saldo
+    private static int transferBalance(int saldoAwal) {
+        System.out.print("\nMasukkan Nominal Transfer: Rp.");
+        int nominalTransfer = scanner.nextInt();
+        return saldoAwal - nominalTransfer;
+    }
+
+    // Fungsi untuk pengecekan bunga tabungan
+    private static double checkInterest() {
+        System.out.print("\nMasukkan Jumlah Tabungan Awal Anda: Rp.");
+        int jumlahTabunganAwal = scanner.nextInt();
+
+        System.out.print("\nMasukkan Lama Menabung Anda (bulan): ");
+        int lamaTabungan = scanner.nextInt();
+
+        double prosentaseBunga = 0.02;
+        double bunga = lamaTabungan * prosentaseBunga * jumlahTabunganAwal;
+        return bunga + jumlahTabunganAwal;
+    }
+
+    // Fungsi untuk menampilkan hasil transaksi
+    private static void displayTransactionResult(String transactionType, String additionalInfo, int saldoAkhir) {
+        System.out.println("\n-----" + transactionType + " BERHASIL-----");
+        System.out.println(additionalInfo);
+        System.out.println("Sisa Saldo Anda Sejumlah : Rp." + saldoAkhir + "\n");
+    }
+
+    public static void main(String[] args) {
+        int saldoAwal;
+
         // Perulangan Password
         do {
-            System.out.print("\nMasukkan Password Anda: ");
-            password = sc.nextInt();
+            int password = enterPassword();
 
-            if (password==123) {
+            if (password == PASSWORD) {
+                displayMenu();
+                int konfirmasiMenu;
 
-                for(int i=0; i<menu.length; i ++){
-                    System.out.println(menu[i]);
+                System.out.print("\nSilahkan Menu Yang Ingin Anda Pilih: ");
+                konfirmasiMenu = scanner.nextInt();
 
-                }
-            
-                int konfirmasi_menu, saldo_awal, saldo_akhir;
-                System.out.print("\nSilhkan Menu Yang Ingin Anda Pilih: ");
-                konfirmasi_menu = sc.nextInt();
+                switch (konfirmasiMenu) {
+                    case 1: // Menu 1. Tarik Tunai
+                        System.out.print("\nMasukkan Jumlah Saldo Anda: Rp.");
+                        saldoAwal = scanner.nextInt();
+                        int saldoAkhirTarikTunai = withdrawCash(saldoAwal);
 
-                switch(konfirmasi_menu) {
-                    case 1: //Menu 1. Tarik Tunai
-
-                    int nominal_tariktunai;
-                    
-                    System.out.print("\nMasukkan Jumlah Saldo Anda: Rp.");
-                    saldo_awal=sc.nextInt();
-                    System.out.print("\nMasukkan Nominal Jumlah Tarik Tunai: Rp.");
-                    nominal_tariktunai=sc.nextInt();
-                    
-                    saldo_akhir= saldo_awal-nominal_tariktunai;
-                    
-                    System.out.println("\n-----TARIK TUNAI BERHASIL-----");
-                    System.out.println("Tarik Tunai Berhasil Senilai : Rp." + nominal_tariktunai + "\nSisa Saldo Anda Sejumlah     : Rp." + saldo_akhir + "\n");
-                    
-                    //Konfirmasi Transaksi Lain
-                    System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
-                    String konfirmasi_lain1 = sc.next();
-                    if (konfirmasi_lain1.equalsIgnoreCase("y")){
-                        continue;
-                    }else{
+                        // Menampilkan hasil transaksi
+                        displayTransactionResult("TARIK TUNAI", "Tarik Tunai Berhasil Senilai : Rp." + saldoAkhirTarikTunai, saldoAkhirTarikTunai);
                         break;
-                    }
 
-                    case 2: //Menu 2. Transfer Saldo
+                    case 2: // Menu 2. Transfer Saldo
+                        System.out.print("\nMasukkan Jumlah Saldo Anda: Rp.");
+                        saldoAwal = scanner.nextInt();
+                        int saldoAkhirTransfer = transferBalance(saldoAwal);
 
-                    int nominal_transfer;
-                    String nama_penerima;
-                    long rekening_penerima;
-
-                    System.out.print("\nNama Penerima: ");
-                    nama_penerima=sc.next();
-
-                    System.out.print("\nMasukkan Rekening Penerima: ");
-                    rekening_penerima=sc.nextLong();
-
-                    System.out.print("\nMasukkan Jumlah Saldo Anda: Rp.");
-                    saldo_awal=sc.nextInt();
-
-                    System.out.print("\nMasukkan Nominal Transfer: Rp.");
-                    nominal_transfer=sc.nextInt();
-                    
-                    saldo_akhir= saldo_awal-nominal_transfer;
-
-                    System.out.println("\n-----TRANSFER BERHASIL-----");
-                    System.out.println("Nama Penerima\t  : " +nama_penerima);
-                    System.out.println("Rekening Penerima : " +rekening_penerima);
-                    System.out.println("\nTranfer Berhasil Senilai : Rp." +nominal_transfer + "\nSisa Saldo Anda Sejumlah : Rp." + saldo_akhir + "\n");
-                    
-                    //Konfirmasi Transaksi Lain
-                    System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
-                    String konfirmasi_lain2 = sc.next();
-                    if (konfirmasi_lain2.equalsIgnoreCase("y")){
-                        continue;
-                    }else{
+                        // Menampilkan hasil transaksi
+                        displayTransactionResult("TRANSFER", "Transfer Berhasil Senilai : Rp." + saldoAkhirTransfer, saldoAkhirTransfer);
                         break;
-                    }
 
                     case 3: // Menu 3. Pengecekan Bunga Tabungan
-                    int jmlh_tabungan_awal, lama_tabungan;
-                    double prosentase_bunga =0.02, bunga, jmlh_tabungan_akhir;
+                        double jumlahTabunganAkhir = checkInterest();
 
-                    System.out.print("\nMasukkan Jumlah Tabungan Awal Anda: Rp.");
-                    jmlh_tabungan_awal=sc.nextInt();
-                    System.out.print("\nMasukkan Lama Menabung Anda: ");
-                    lama_tabungan=sc.nextInt();
-
-                    bunga= lama_tabungan*prosentase_bunga*jmlh_tabungan_awal;
-                    jmlh_tabungan_akhir=bunga+jmlh_tabungan_awal;
-
-                    System.out.println("\nJumlah Tabungan Akhir Anda Adalah Senilai : Rp." +jmlh_tabungan_akhir +"\n");
-                    
-                    //Konfirmasi Transaksi Lain
-                    System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
-                    String konfirmasi_lain3 = sc.next();
-                    if (konfirmasi_lain3.equalsIgnoreCase("y")){
-                        continue;
-                    }else{
+                        // Menampilkan hasil transaksi
+                        displayTransactionResult("PENGECEKAN BUNGA TABUNGAN", "Jumlah Tabungan Akhir Anda Adalah Senilai : Rp." + jumlahTabunganAkhir, (int) jumlahTabunganAkhir);
                         break;
-                    }
 
                     default:
-                    System.out.println("\nMaaf Menu Lainnya Masih Dalam Pengembangan\n");
-
-                    //Konfirmasi Transaksi Lain
-                    System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
-                    String konfirmasi_lain = sc.next();
-                    if (konfirmasi_lain.equalsIgnoreCase("y")){
-                        continue;
-                    }else{
+                        System.out.println("\nMaaf Menu Lainnya Masih Dalam Pengembangan\n");
                         break;
-                    }
+                }
 
-                }break;
-            
-            }else {
+                // Konfirmasi Transaksi Lain
+                System.out.println("Apakah Anda Ingin Melakukan Transaksi Lainnya? (y/t)");
+                String konfirmasiLain = scanner.next();
+                if (!konfirmasiLain.equalsIgnoreCase("y")) {
+                    break;
+                }
+            } else {
                 System.out.println("\nPassword Yang Anda Masukkan Salah\nSilahkan Masukkan Ulang Password Anda");
             }
-        }while(true);
+        } while (true);
+
+        scanner.close();
     }
 }
