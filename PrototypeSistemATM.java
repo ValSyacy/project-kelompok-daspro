@@ -46,15 +46,22 @@ public class PrototypeSistemATM {
     private static int tarikTunai(int saldoAwal) {
         System.out.print("\nMasukkan Nominal Jumlah Tarik Tunai: Rp.");
         int nominalTarikTunai = scanner.nextInt();
-        int saldoAkhirTarikTunai = saldoAwal - nominalTarikTunai;
+        int saldoAkhirTarikTunai = 0;
+    
+        if (nominalTarikTunai > saldoAwal) {
+            System.out.println("\nMaaf, Saldo Anda Tidak Mencukupi Untuk Transaksi Tarik Tunai.");
+        } else {
+            saldoAkhirTarikTunai = saldoAwal - nominalTarikTunai;
 
-        // Menampilkan hasil transaksi
-        System.out.println("\n-----TARIK TUNAI BERHASIL-----");
-        System.out.println("Tarik Tunai Berhasil Senilai : Rp." + nominalTarikTunai);
-        System.out.println("Sisa Saldo Anda Sejumlah : Rp." + saldoAkhirTarikTunai + "\n");
-
+            // Menampilkan hasil transaksi
+            System.out.println("\n-----TARIK TUNAI BERHASIL-----");
+            System.out.println("Tarik Tunai Berhasil Senilai : Rp." + nominalTarikTunai);
+            System.out.println("Sisa Saldo Anda Sejumlah : Rp." + saldoAkhirTarikTunai + "\n");
+        }
+    
         return saldoAkhirTarikTunai;
     }
+    
 
     // Fungsi untuk pengecekan bunga tabungan
     private static double cekBungaTabungan() {
