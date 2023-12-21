@@ -20,6 +20,22 @@ public class ATMSystem {
         scanner.close();
     }
 
+    // fungsi rekening
+    private static void login() {
+        System.out.println();
+        System.out.print("| Masukkan no. rekening Anda    : ");
+        String rekening = scanner.next();
+        System.out.println();
+        System.out.println("----------------------------------------------------------");
+    }
+
+    // fungsi input password
+    private static int masukkanPassword() {
+        System.out.println();
+        System.out.print("| Masukkan Password Anda        : ");
+        return scanner.nextInt();
+    }
+    
     // fungsi password salah
     private static void loginLoop() {
         do {
@@ -37,22 +53,6 @@ public class ATMSystem {
                 System.out.println("==========================================================");
             }
         } while (true);
-    }
-
-    // fungsi rekening
-    private static void login() {
-        System.out.println();
-        System.out.print("| Masukkan no. rekening Anda    : ");
-        String rekening = scanner.next();
-        System.out.println();
-        System.out.println("----------------------------------------------------------");
-    }
-
-    // fungsi input password
-    private static int masukkanPassword() {
-        System.out.println();
-        System.out.print("| Masukkan Password Anda        : ");
-        return scanner.nextInt();
     }
 
     // fungsi utk looping menu
